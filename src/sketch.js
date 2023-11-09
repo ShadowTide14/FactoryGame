@@ -15,7 +15,7 @@ function tick() {
     //put the tick events here
     if (mainLoop) { //don't start until the window has actually finished loading
         background(ctx, new Color(200,200,200));
-        
+        drawGrid(0,0,1);
     }
 }
 
