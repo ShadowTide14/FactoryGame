@@ -1,6 +1,6 @@
 //Epic File for all the drawing stuff!!!!!!11!!!!!!1!!!!1!!1!!11!11!
 
-const tileW = 50;
+const tileW = 100;
 
 canvasW = canvas.clientWidth;
 canvasH = canvas.clientHeight;
@@ -15,8 +15,8 @@ function drawGrid(camX, camY, camZoom) {
 }
 
 function drawTile(x, y, w, h=w) {
-    fill(50, 50, 50);
-    stroke(0, 0, 0);
-    strokeW(5);
-    ctx.fillRect(x, y, w, h);
+    fill(235, 235, 235);
+    stroke(155, 155, 155);
+    strokeW(4);
+    ctx.strokeRect(x, y, w, h);
 }
