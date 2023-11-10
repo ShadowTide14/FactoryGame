@@ -1,6 +1,10 @@
 # FactoryGame
 A javascript factory game
 
+# controls
+WASD = move camera
+
+
 
 # IDEAS
 you are a sentient AI tasked with monitoring and building a factory.
