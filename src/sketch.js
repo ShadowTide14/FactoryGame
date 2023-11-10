@@ -2,14 +2,24 @@ let mainLoop = false;
 
 let drones = [];
 
+
+async function loadFonts() {
+    const linjaFont = new FontFace("myFont", "url(https://lipamanka.gay/linjalipamanka-normal.otf)");
+    await linjaFont.load();
+
+    document.fonts.add(linjaFont);
+}
+
 window.onload = () => {
-    init();
+    loadFonts().then(() => {init();});
 }
 
 function init() {
     //starts on window.onload
     mainLoop = true;
     keyboard = new ButtonTracker();
+
+    
 
     for (let i = 0; i < 3; i++) {
         drones[i] = new Drone();
@@ -33,6 +43,7 @@ function tick() {
             //drones[i].goal_pos.y = mouseY;
         }
 
+        //camera controlls
         if (keyboard.isKeyDown("w")) {
             camY += 3;
         }
@@ -53,6 +64,10 @@ function tick() {
             drones[i].update();
             drones[i].draw();
         }
+
+        fill(0,0,0);
+        ctx.font = "40px monospace";
+        text("hello there...", 0,40);
     }
 }
 
