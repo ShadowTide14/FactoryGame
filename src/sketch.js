@@ -26,7 +26,7 @@ function init() {
     
 
     for (let i = 0; i < 3; i++) {
-        drones[i] = new Drone();
+        world.drones[i] = new Drone((Math.random()*2 - 1) * 100,(Math.random()*2 - 1) * 100,);
     }
 
     //once the player clicks on the window it automatically goes fullscreen
@@ -65,13 +65,6 @@ function tick() {
         background(new Color(200,200,200));
 
         world.draw();
-
-        drawGrid(camX,camY,camZoom);
-
-        for (let i = 0; i < drones.length; i++) {
-            drones[i].update();
-            drones[i].draw();
-        }
 
         fill(0,0,0);
         ctx.font = "40px monospace";

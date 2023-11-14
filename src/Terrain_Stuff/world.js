@@ -7,6 +7,9 @@ class World {
     constructor(seed) {
         this.name = "";
         this.grid = {};
+        this.buildings = {};
+        this.drones = [];
+
         this.seed = seed;
         noise.seed(seed);
     }
@@ -48,6 +51,13 @@ class World {
             }
         } catch (error) {
             
+        }
+
+        drawGrid(camX,camY,camZoom);
+
+        for (let i = 0; i < this.drones.length; i++) {
+            this.drones[i].update();
+            this.drones[i].draw();
         }
 
     }
