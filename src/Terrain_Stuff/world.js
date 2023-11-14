@@ -8,6 +8,7 @@ class World {
         this.name = "";
         this.grid = {};
         this.seed = seed;
+        noise.seed(seed);
     }
 
     get camChunk() {
@@ -23,7 +24,7 @@ class World {
                 this.grid[temp.x] = {};
             }
             this.grid[temp.x][temp.y] = new Chunk(temp.x,temp.y);
-            console.log("hello!");
+            console.log("new chunk created!");
         }
     }
 
@@ -33,8 +34,15 @@ class World {
             for (let i = 0; i < temp.tiles.length; i++) {
                 for (let j = 0; j < temp.tiles[i].length; j++) {
                     if (temp.tiles[i][j].type == "empty") {
-                        fill(256,256,256);
+                        fill(255,255,255);
                         ctx.fillRect(i*tileW + camX - (this.camChunk.x + 1) * (50 * tileW), j*tileW + camY - (this.camChunk.y + 1) * (50 * tileW), tileW, tileW);
+                    } else if (temp.tiles[i][j].type == "iron") {
+                        fill(255, interpolate(temp.tiles[i][j].purity, 0, 100, 255, 0), interpolate(temp.tiles[i][j].purity, 0, 100, 255, 0));
+                        ctx.fillRect(i*tileW + camX - (this.camChunk.x + 1) * (50 * tileW), j*tileW + camY - (this.camChunk.y + 1) * (50 * tileW), tileW, tileW);
+                    } else if (temp.tiles[i][j].type == "copper") {
+                        fill(interpolate(temp.tiles[i][j].purity, 0, 100, 255, 0), 255, interpolate(temp.tiles[i][j].purity, 0, 100, 255, 132));
+                        ctx.fillRect(i*tileW + camX - (this.camChunk.x + 1) * (50 * tileW), j*tileW + camY - (this.camChunk.y + 1) * (50 * tileW), tileW, tileW);
+
                     }
                 }
             }
